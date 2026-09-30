@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-palette="navytomato">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -369,14 +369,6 @@ body.panels .dots{display:flex;flex-direction:column;align-items:center;gap:12px
 
 body.panels[data-at="rates"] .dots{--leaf:var(--price-ink)}
 body.panels[data-at="rates"] .dots button{color:var(--price-ink)}
-:root[data-palette="blueberry"]{--paper:#F4F6FB;--panel:#E3E8F5;--sage:#D6DDF0;--ink:#1C2750;--leaf:#2F4BA8;--leaf-ink:#FFFFFF;--body:#36406A;--muted:#57608A;--yuzu:#F5B83D;--accent-ink:#1C2750;--yuzu-soft:#FDEFD2;--band:#F5B83D;--price-bg:#2F4BA8;--price-ink:#FFFFFF;--t1:#DCE5FA;--t2:#FDEBC0;--t3:#F7D9DE;--card:#FFFFFF}
-:root[data-palette="navy"]{--paper:#F5F6F9;--panel:#E2E6EF;--sage:#D3D9E6;--ink:#16213F;--leaf:#1F2F5C;--leaf-ink:#FFFFFF;--body:#303A55;--muted:#565F78;--yuzu:#F5B83D;--accent-ink:#1F2F5C;--yuzu-soft:#FDEFD2;--band:#F5B83D;--price-bg:#1F2F5C;--price-ink:#FFFFFF;--t1:#DDE3EF;--t2:#FDEBC0;--t3:#F7D9DE;--card:#FFFFFF}
-:root[data-palette="cobalt"]{--paper:#F3F6FD;--panel:#DFE7FB;--sage:#CFDBF8;--ink:#15245A;--leaf:#1F4FD1;--leaf-ink:#FFFFFF;--body:#36406A;--muted:#57608A;--yuzu:#F5B83D;--accent-ink:#15245A;--yuzu-soft:#FDEFD2;--band:#F5B83D;--price-bg:#1F4FD1;--price-ink:#FFFFFF;--t1:#D8E3FC;--t2:#FDEBC0;--t3:#F7D9DE;--card:#FFFFFF}
-:root[data-palette="denim"]{--paper:#F5F6F8;--panel:#E1E6EE;--sage:#D2D9E4;--ink:#1E2B45;--leaf:#3D5A8A;--leaf-ink:#FFFFFF;--body:#39465E;--muted:#5E6A80;--yuzu:#E9A93A;--accent-ink:#1E2B45;--yuzu-soft:#FAEBCD;--band:#E9A93A;--price-bg:#3D5A8A;--price-ink:#FFFFFF;--t1:#DCE3EE;--t2:#FDEBC0;--t3:#F7D9DE;--card:#FFFFFF}
-:root[data-palette="cornflower"]{--paper:#F6F7FD;--panel:#E6EAFA;--sage:#D9DFF7;--ink:#1C2750;--leaf:#4A64CF;--leaf-ink:#FFFFFF;--body:#36406A;--muted:#57608A;--yuzu:#F5B83D;--accent-ink:#1C2750;--yuzu-soft:#FDEFD2;--band:#F5B83D;--price-bg:#F5B83D;--price-ink:#1C2750;--t1:#E0E6FB;--t2:#FDEBC0;--t3:#F7D9DE;--card:#FFFFFF}
-:root[data-palette="coral"]{--paper:#F4F6FB;--panel:#E3E8F5;--sage:#D6DDF0;--ink:#1C2750;--leaf:#2F4BA8;--leaf-ink:#FFFFFF;--body:#36406A;--muted:#57608A;--yuzu:#F28C6E;--accent-ink:#1C2750;--yuzu-soft:#FCE3DA;--band:#F28C6E;--price-bg:#2F4BA8;--price-ink:#FFFFFF;--t1:#DCE5FA;--t2:#FDE0D4;--t3:#FBEBC6;--card:#FFFFFF}
-:root[data-palette="lime"]{--paper:#F4F6FB;--panel:#E3E8F5;--sage:#D6DDF0;--ink:#1C2750;--leaf:#2F4BA8;--leaf-ink:#FFFFFF;--body:#36406A;--muted:#57608A;--yuzu:#C9DB4F;--accent-ink:#1C2750;--yuzu-soft:#F2F6CF;--band:#C9DB4F;--price-bg:#2F4BA8;--price-ink:#FFFFFF;--t1:#DCE5FA;--t2:#EEF4C6;--t3:#FDEBC0;--card:#FFFFFF}
-:root[data-palette="navytomato"]{--paper:#FAF8F6;--panel:#EDE7E3;--sage:#E2D9D3;--ink:#16213F;--leaf:#1F2F5C;--leaf-ink:#FFFFFF;--body:#303A55;--muted:#5B6072;--yuzu:#E8573D;--accent-ink:#FFFFFF;--yuzu-soft:#FBE1DA;--band:#F5B83D;--price-bg:#F8E6DF;--price-ink:#1F2F5C;--t1:#DDE3EF;--t2:#FDEBC0;--t3:#F9D6CC;--card:#FFFFFF}
 
 /* booking popup */
 .booking{width:min(600px,94vw);height:min(840px,92vh);height:min(840px,92dvh);max-width:none;max-height:none;padding:0;border:0;border-radius:24px;background:#fff;overflow:hidden;box-shadow:0 24px 80px rgba(20,30,60,.3)}
@@ -394,19 +386,8 @@ body.panels[data-at="rates"] .dots button{color:var(--price-ink)}
 .booking-status .btn{background:#1F2F5C;color:#fff;border-color:#1F2F5C}
 @media (max-width:640px){.booking{width:100vw;height:100%;border-radius:0}}
 @media (prefers-reduced-motion:reduce){.booking[open]{animation:none}}
-/* palette preview picker (remove before launch) */
-.palette{position:fixed;left:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:40;background:var(--paper);border:1.5px solid var(--ink);border-radius:18px;padding:12px 14px;box-shadow:0 10px 30px rgba(0,0,0,.12);font-size:13px;max-width:calc(100vw - 32px)}
-.palette p{font-weight:700;margin:0 0 8px;color:var(--ink)}
-.palette .sw{display:grid;grid-template-columns:repeat(4,auto);gap:8px}
-.palette button{border:0;padding:0;background:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px;color:var(--ink);font:500 11px var(--sans);width:62px}
-.palette .chip{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--c1) 0 50%,var(--c2) 50% 100%);box-shadow:0 0 0 1.5px rgba(0,0,0,.15)}
-.palette button[aria-pressed="true"] .chip{box-shadow:0 0 0 2.5px var(--paper),0 0 0 4.5px var(--ink)}
-.palette .hide{position:absolute;top:6px;right:8px;width:auto;font-size:16px;line-height:1}
-.palette.min .sw,.palette.min p{display:none}
-.palette.min{padding:8px 12px}
-.palette .show{display:none;width:auto;font-size:12px;font-weight:700}
-.palette.min .show{display:block}.palette.min .hide{display:none}
-@media (max-width:560px){.palette button{width:52px;font-size:10px}.palette .chip{width:30px;height:30px}}
+:root[data-palette="navytomato"]{--paper:#FAF8F6;--panel:#EDE7E3;--sage:#E2D9D3;--ink:#16213F;--leaf:#1F2F5C;--leaf-ink:#FFFFFF;--body:#303A55;--muted:#5B6072;--yuzu:#E8573D;--accent-ink:#FFFFFF;--yuzu-soft:#FBE1DA;--band:#F5B83D;--price-bg:#F8E6DF;--price-ink:#1F2F5C;--t1:#DDE3EF;--t2:#FDEBC0;--t3:#F9D6CC;--card:#FFFFFF}
+/* palette: navy + tomato */
 </style>
 </head>
 <body>
@@ -421,7 +402,6 @@ body.panels[data-at="rates"] .dots button{color:var(--price-ink)}
   <a href="#about" data-go="5" data-tab="5">About</a>
   <a href="#refer" data-go="6" data-tab="6">For physicians</a>
   <span class="spacer"></span>
-  <a class="rail-phone" href="tel:+16268289333">626.828.9333</a>
 </nav>
 
 <div class="page">
@@ -719,7 +699,7 @@ body.panels[data-at="rates"] .dots button{color:var(--price-ink)}
   var FALLBACK='https://www.symphoneats.com/make-an-appointment', loaded=false, timer=null;
   function fail(){
     status.classList.add('fail');
-    status.innerHTML='<span>The booking calendar couldn\'t load here.</span><a class="btn btn-solid" href="'+FALLBACK+'" target="_blank" rel="noopener">Book on symphoneats.com</a><span>Or call <a href="tel:+16268289333">626.828.9333</a></span>';
+    status.innerHTML='<span>The booking calendar couldn\'t load here.</span><a class="btn btn-solid" href="'+FALLBACK+'" target="_blank" rel="noopener">Book on symphoneats.com</a><span>Or email <a href="mailto:book@diabetesrdn.com">book@diabetesrdn.com</a></span>';
   }
   // Your Practice Better booking page. To double-check it, copy the Public Booking Link
   // for this service (My Practice > My Services) and paste it here.
@@ -745,28 +725,6 @@ body.panels[data-at="rates"] .dots button{color:var(--price-ink)}
   dlg.addEventListener('click',function(e){ if(e.target===dlg) dlg.close(); });
 })();
 </script>
-<div class="palette" role="group" aria-label="Preview color palettes">
-  <button class="hide" type="button" aria-label="Minimize palette picker">&times;</button>
-  <button class="show" type="button">Palettes</button>
-  <p>Try a blue</p>
-  <div class="sw"><button type="button" data-p="blueberry" aria-pressed="false" style="--c1:#2F4BA8;--c2:#F5B83D"><span class="chip"></span>Blueberry + saffron</button><button type="button" data-p="navy" aria-pressed="false" style="--c1:#1F2F5C;--c2:#F5B83D"><span class="chip"></span>Navy + saffron</button><button type="button" data-p="cobalt" aria-pressed="false" style="--c1:#1F4FD1;--c2:#F5B83D"><span class="chip"></span>Cobalt + saffron</button><button type="button" data-p="denim" aria-pressed="false" style="--c1:#3D5A8A;--c2:#E9A93A"><span class="chip"></span>Denim + saffron</button><button type="button" data-p="cornflower" aria-pressed="false" style="--c1:#4A64CF;--c2:#F5B83D"><span class="chip"></span>Cornflower + saffron</button><button type="button" data-p="coral" aria-pressed="false" style="--c1:#2F4BA8;--c2:#F28C6E"><span class="chip"></span>Blueberry + coral</button><button type="button" data-p="lime" aria-pressed="false" style="--c1:#2F4BA8;--c2:#C9DB4F"><span class="chip"></span>Blueberry + lime</button><button type="button" data-p="navytomato" aria-pressed="false" style="--c1:#1F2F5C;--c2:#E8573D"><span class="chip"></span>Navy + tomato</button></div>
-</div>
-<script>
-(function(){
-  var root=document.documentElement, box=document.querySelector('.palette');
-  var bs=box.querySelectorAll('[data-p]'), keys=['blueberry', 'navy', 'cobalt', 'denim', 'cornflower', 'coral', 'lime', 'navytomato'];
-  function set(k){
-    if(keys.indexOf(k)<0) k='navytomato';
-    root.setAttribute('data-palette',k);
-    bs.forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-p')===k?'true':'false');});
-    try{localStorage.setItem('drdn-palette',k);}catch(e){}
-  }
-  var saved='navytomato'; try{saved=localStorage.getItem('drdn-palette')||'navytomato';}catch(e){}
-  set(saved);
-  bs.forEach(function(b){b.addEventListener('click',function(){set(b.getAttribute('data-p'));});});
-  box.querySelector('.hide').addEventListener('click',function(){box.classList.add('min');});
-  box.querySelector('.show').addEventListener('click',function(){box.classList.remove('min');});
-})();
-</script>
+
 </body>
 </html>
