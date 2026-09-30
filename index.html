@@ -300,6 +300,7 @@ body.panels .dots{display:none !important}
 .section-bg picture{display:block;width:100%;height:100%}
 /* keep the slide-up reveal from leaving phantom scroll space */
 body.panels .tl-grid,body.panels .three-col,body.panels .stats,body.panels .fineprint,body.panels .site-footer,body.panels .split,body.panels .team,body.panels .price-body{overflow:clip}
+@media (min-width:1024px){.team{grid-template-columns:minmax(0,37%) minmax(0,1fr)}.headshot{padding-left:clamp(24px,4.5vw,72px)}body.panels .team-copy{gap:20px;padding:28px 0}}
 /* reveal */
 @keyframes rvIn{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
 @keyframes draw{to{stroke-dashoffset:0}}
