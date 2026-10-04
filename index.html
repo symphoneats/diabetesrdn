@@ -596,8 +596,8 @@ body.panels[data-at="rates"] .dots button{color:var(--price-ink)}
 @media (prefers-reduced-motion:reduce){.refer-dlg[open]{animation:none}}
 
 /* Subscribe (Substack) */
-.hdr-sub{display:none}
-@media (min-width:1024px){.site-header .hdr-sub{display:inline-flex}}
+.site-header .hdr-actions .hdr-sub{display:none !important}
+@media (min-width:1024px){.site-header .hdr-actions .hdr-sub{display:inline-flex !important}}
 .sub-dlg{width:min(540px,94vw)}
 .sub-frame-wrap{position:relative;height:330px;background:#fff;border:1.5px solid color-mix(in srgb,var(--ink) 14%,transparent)}
 .sub-frame-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#fff}
