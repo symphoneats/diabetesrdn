@@ -570,8 +570,30 @@ body.panels[data-at="rates"] .dots button{color:var(--price-ink)}
 @media (prefers-reduced-motion:reduce){.fill-text .ft-fill,.panel.is-active .fill-text .ft-fill{clip-path:none;animation:none}}
 
 /* Packages link in Rates */
-.pkg-link{color:var(--hl,var(--leaf));font-weight:600;text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:3px}
+.pkg-link{color:var(--hl,var(--leaf));font-weight:inherit;text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:3px}
 .pkg-link:hover{text-decoration-thickness:2.5px}
+
+/* Refer a patient pop-up */
+.refer-dlg{width:min(560px,94vw);max-height:92vh;max-height:92dvh;padding:0;border:0;border-radius:24px;background:var(--paper);overflow:auto;box-shadow:0 24px 80px rgba(20,30,20,.28);color:var(--body)}
+.refer-dlg::backdrop{background:color-mix(in srgb,var(--ink) 55%,transparent)}
+.refer-dlg[open]{animation:bookIn .35s cubic-bezier(.2,.7,.2,1)}
+.refer-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:22px 20px 18px 26px;background:#FDF4D3;border-bottom:3px solid #F5D35A}
+.refer-head h2{margin:0;font:400 clamp(28px,4vw,34px)/1.25 "Borel",var(--serif);color:var(--ink);padding-top:.15em}
+.refer-head p{margin:6px 0 0;font:500 15px/1.4 var(--sans);color:var(--muted)}
+.refer-close{flex:none;width:40px;height:40px;border-radius:50%;border:1.5px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer;display:flex;align-items:center;justify-content:center}
+.refer-close svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+.refer-body{padding:22px 26px 26px}
+.refer-preview{height:min(320px,38vh);overflow-y:auto;border:1.5px solid color-mix(in srgb,var(--ink) 18%,transparent);background:#fff}
+.refer-preview img{display:block;width:100%;height:auto}
+.refer-download{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:18px;min-height:54px;padding:0 24px;background:#F8C2B5;color:var(--ink);text-decoration:none;font:700 17px var(--cooper,var(--serif));font-variation-settings:"SOFT" 100,"WONK" 0,"opsz" 48;transition:background .2s ease}
+.refer-download:hover{background:#F4B2A3}
+.refer-download svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.refer-note{margin:16px 0 0;font:400 15px/1.6 var(--text,var(--sans));color:var(--body)}
+.refer-return{display:flex;flex-direction:column;gap:3px;margin-top:16px;padding:14px 18px;background:#FDE6E1;border-left:4px solid #E07468;font:500 15px/1.5 var(--sans);color:var(--ink)}
+.refer-return strong{font-weight:700}
+.refer-return a{color:var(--hl,var(--leaf));font-weight:700}
+@media (max-width:640px){.refer-dlg{width:100vw;max-height:100%;height:100%;border-radius:0}}
+@media (prefers-reduced-motion:reduce){.refer-dlg[open]{animation:none}}
 </style>
 </head>
 <body>
@@ -723,7 +745,7 @@ body.panels[data-at="rates"] .dots button{color:var(--price-ink)}
     <div class="three-col">
       <div class="rv" style="--d:2"><span class="col-title">Who to refer</span><ul class="list"><li>Newly diagnosed type 2 or prediabetes</li><li>Rising A1c despite medication changes</li><li>Type 1 and insulin-dependent patients</li><li>A change in nutritional status related to their diagnosis</li><li>Starting or struggling on a GLP-1</li></ul></div>
       <div class="rv" style="--d:3"><span class="col-title">What you get back</span><ul class="list"><li>Visit summaries after the initial assessment and follow-ups</li><li>Notes on patterns seen in CGM or glucose logs</li><li>A heads up when something needs your attention</li></ul></div>
-      <div class="rv" style="--d:4"><span class="col-title">How to refer</span><ul class="list"><li>Email <a href="mailto:book@diabetesrdn.com">book@diabetesrdn.com</a></li><li>Fax or referral form</li><li>Or have your patient book directly online</li></ul></div>
+      <div class="rv" style="--d:4"><span class="col-title">How to refer</span><ul class="list"><li>Email <a href="mailto:book@diabetesrdn.com">book@diabetesrdn.com</a></li><li>Fax or <a href="forms/referral-form.pdf" data-referral>referral form</a></li><li>Or have your patient book directly online</li></ul></div>
     </div>
     <div class="fineprint rv" style="--d:5"><span>Ready to feel more in control of your blood sugar?</span><span class="veg-inline" aria-hidden="true"><picture><source srcset="images/vegetables-cta.webp" type="image/webp"><img src="images/vegetables-cta.png" alt="" width="1056" height="553" loading="lazy" decoding="async"></picture></span><a class="btn btn-solid btn-sm" href="#book" role="button" data-book>Book your first visit</a></div>
     <footer class="site-footer rv" style="--d:6"><span><strong>DiabetesRDN</strong> is part of <a href="https://www.symphoneats.com">Symphoneats</a>, Nutrition in Harmony.</span><span>Serving Pasadena, Los Angeles County and Santa Barbara.</span><span>This site is for general information and isn't medical advice.</span></footer>
@@ -878,6 +900,35 @@ body.panels[data-at="rates"] .dots button{color:var(--price-ink)}
 })();
 </script>
 
+<dialog class="refer-dlg" id="referral" aria-labelledby="refer-title">
+  <div class="refer-head">
+    <div><h2 id="refer-title">Refer a patient</h2><p>One-page referral form for healthcare providers</p></div>
+    <button class="refer-close" type="button" aria-label="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+  <div class="refer-body">
+    <div class="refer-preview" tabindex="0" aria-label="Referral form preview, scrollable"><img src="forms/referral-form-preview.png" alt="Preview of the DiabetesRDN patient referral form" loading="lazy" decoding="async"></div>
+    <a class="refer-download" href="forms/referral-form.pdf" download="DiabetesRDN-referral-form.pdf"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>Download form (PDF)</a>
+    <p class="refer-note">Download the form, fill it in, save it, then send it back using one of the options below. You can also print it and fill it out by hand.</p>
+    <div class="refer-return">
+      <strong>Return by fax or secure email only</strong>
+      <span>Fax: 626-965-2533</span>
+      <span>Secure email: <a href="mailto:book@diabetesrdn.com">book@diabetesrdn.com</a></span>
+    </div>
+  </div>
+</dialog>
+<script>
+(function(){
+  var dlg=document.getElementById('referral');
+  document.querySelectorAll('[data-referral]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      if(typeof dlg.showModal!=='function') return;
+      e.preventDefault(); dlg.showModal();
+    });
+  });
+  dlg.querySelector('.refer-close').addEventListener('click',function(){dlg.close();});
+  dlg.addEventListener('click',function(e){ if(e.target===dlg) dlg.close(); });
+})();
+</script>
 <dialog class="booking" id="packages" aria-label="Packages">
   <div class="booking-inner">
     <div class="booking-bar"><span>Packages</span><button class="booking-close" type="button" aria-label="Close packages"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
