@@ -594,6 +594,16 @@ body.panels[data-at="rates"] .dots button{color:var(--price-ink)}
 .refer-return a{color:var(--hl,var(--leaf));font-weight:700}
 @media (max-width:640px){.refer-dlg{width:100vw;max-height:100%;height:100%;border-radius:0}}
 @media (prefers-reduced-motion:reduce){.refer-dlg[open]{animation:none}}
+
+/* Subscribe (Substack) */
+.hdr-sub{display:none}
+@media (min-width:1024px){.site-header .hdr-sub{display:inline-flex}}
+.sub-dlg{width:min(540px,94vw)}
+.sub-frame-wrap{position:relative;height:330px;background:#fff;border:1.5px solid color-mix(in srgb,var(--ink) 14%,transparent)}
+.sub-frame-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#fff}
+.sub-status{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;margin:0;font:500 15px var(--sans);color:var(--muted)}
+.refer-note a{color:var(--hl,var(--leaf))}
+@media (max-width:640px){.sub-dlg{height:auto;max-height:100%}}
 </style>
 </head>
 <body>
@@ -617,6 +627,7 @@ body.panels[data-at="rates"] .dots button{color:var(--price-ink)}
     <span><span class="brand-mark">Diabetes<b>RDN</b></span><span class="brand-sub">Diabetes nutrition care by Symphoneats</span></span>
   </a>
   <div class="hdr-actions">
+    <a class="btn btn-outline btn-sm hdr-sub" href="https://diabetesrdn.substack.com/" target="_blank" rel="noopener" data-subscribe>Subscribe</a>
     <a class="btn btn-solid btn-sm" href="#book" role="button" data-book>Book a visit</a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mnav" aria-label="Open menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="l1" d="M4 7h16"/><path class="l2" d="M4 12h16"/><path class="l3" d="M4 17h16"/></svg></button>
   </div>
@@ -627,6 +638,7 @@ body.panels[data-at="rates"] .dots button{color:var(--price-ink)}
     <a href="#rates">Rates</a>
     <a href="#about">About</a>
     <a href="#refer">For physicians</a>
+    <a href="https://diabetesrdn.substack.com/" target="_blank" rel="noopener" data-subscribe>Subscribe</a>
     <a class="btn btn-solid" href="#book" role="button" data-book>Book a visit</a>
   </nav>
 </header>
@@ -900,6 +912,40 @@ body.panels[data-at="rates"] .dots button{color:var(--price-ink)}
 })();
 </script>
 
+<dialog class="refer-dlg sub-dlg" id="subscribe" aria-labelledby="sub-title">
+  <div class="refer-head">
+    <div><h2 id="sub-title">Subscribe</h2><p>Notes on food, blood sugar and life beyond diabetes, from Katherine Chen, MS, RD, CDCES.</p></div>
+    <button class="refer-close" type="button" aria-label="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+  <div class="refer-body">
+    <div class="sub-frame-wrap"><p class="sub-status">Loading…</p></div>
+    <p class="refer-note">Free to subscribe, and you can unsubscribe anytime. Prefer to browse first? <a href="https://diabetesrdn.substack.com/" target="_blank" rel="noopener">Read the latest posts on Substack</a>.</p>
+  </div>
+</dialog>
+<script>
+(function(){
+  var dlg=document.getElementById('subscribe'), wrap=dlg.querySelector('.sub-frame-wrap'), status=dlg.querySelector('.sub-status');
+  var SUBSTACK='https://diabetesrdn.substack.com/', loaded=false;
+  function load(){
+    if(loaded) return; loaded=true;
+    var f=document.createElement('iframe');
+    f.src=SUBSTACK+'embed'; f.title='Subscribe to DiabetesRDN on Substack';
+    f.setAttribute('scrolling','no');
+    f.addEventListener('load',function(){ status.style.display='none'; });
+    wrap.appendChild(f);
+  }
+  document.querySelectorAll('[data-subscribe]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      if(typeof dlg.showModal!=='function') return;
+      e.preventDefault();
+      var m=document.getElementById('mnav'); if(m&&!m.hidden){ var b=document.querySelector('.menu-btn'); if(b) b.click(); }
+      load(); dlg.showModal();
+    });
+  });
+  dlg.querySelector('.refer-close').addEventListener('click',function(){dlg.close();});
+  dlg.addEventListener('click',function(e){ if(e.target===dlg) dlg.close(); });
+})();
+</script>
 <dialog class="refer-dlg" id="referral" aria-labelledby="refer-title">
   <div class="refer-head">
     <div><h2 id="refer-title">Refer a patient</h2><p>One-page referral form for healthcare providers</p></div>
