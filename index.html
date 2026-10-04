@@ -568,6 +568,10 @@ body.panels[data-at="rates"] .dots button{color:var(--price-ink)}
 .fill-text .ft-fill{clip-path:inset(-10% 100% -10% 0)}
 .panel.is-active .fill-text .ft-fill{animation:ftFill 1.8s cubic-bezier(.45,.05,.25,1) .5s both}
 @media (prefers-reduced-motion:reduce){.fill-text .ft-fill,.panel.is-active .fill-text .ft-fill{clip-path:none;animation:none}}
+
+/* Packages link in Rates */
+.pkg-link{color:var(--hl,var(--leaf));font-weight:600;text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:3px}
+.pkg-link:hover{text-decoration-thickness:2.5px}
 </style>
 </head>
 <body>
@@ -684,7 +688,7 @@ body.panels[data-at="rates"] .dots button{color:var(--price-ink)}
         <div><span class="price">$300</span><small>Initial assessment</small></div>
         <div><span class="price sm">$175</span><small>Follow-up visits</small></div>
       </div>
-      <p class="lead rv" style="--d:2">Packages are available for ongoing support. Private pay, with superbills for eligible visits so you can request out-of-network reimbursement.</p>
+      <p class="lead rv" style="--d:2"><a class="pkg-link" href="https://l.bttr.to/oIcjy" target="_blank" rel="noopener" data-packages>Packages</a> are available for ongoing support. Private pay, with superbills for eligible visits so you can request out-of-network reimbursement.</p>
       <a class="btn btn-dark rv" style="--d:3;margin-top:8px;min-height:60px;padding:0 40px;font-size:17px" href="#book" role="button" data-book>Book your first visit</a>
     </div>
   </section>
@@ -874,6 +878,42 @@ body.panels[data-at="rates"] .dots button{color:var(--price-ink)}
 })();
 </script>
 
+<dialog class="booking" id="packages" aria-label="Packages">
+  <div class="booking-inner">
+    <div class="booking-bar"><span>Packages</span><button class="booking-close" type="button" aria-label="Close packages"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+    <p class="booking-status">Loading packages…</p>
+  </div>
+</dialog>
+<script>
+(function(){
+  var dlg=document.getElementById('packages'), inner=dlg.querySelector('.booking-inner'), status=dlg.querySelector('.booking-status');
+  // Your Practice Better packages page
+  var PACKAGES_URL='https://l.bttr.to/oIcjy', loaded=false, timer=null;
+  function fail(){
+    status.classList.add('fail');
+    status.innerHTML='<span>The packages page couldn\'t load here.</span><a class="btn btn-solid" href="'+PACKAGES_URL+'" target="_blank" rel="noopener">View packages</a>';
+  }
+  function load(){
+    if(loaded) return; loaded=true;
+    var f=document.createElement('iframe');
+    f.title='DiabetesRDN packages';
+    f.src=PACKAGES_URL;
+    f.className='booking-frame';
+    f.setAttribute('allow','payment');
+    f.addEventListener('load',function(){ clearTimeout(timer); status.style.display='none'; });
+    inner.appendChild(f);
+    timer=setTimeout(function(){ f.remove(); fail(); status.style.display=''; },15000);
+  }
+  document.querySelectorAll('[data-packages]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      if(typeof dlg.showModal!=='function') return;
+      e.preventDefault(); load(); dlg.showModal();
+    });
+  });
+  dlg.querySelector('.booking-close').addEventListener('click',function(){dlg.close();});
+  dlg.addEventListener('click',function(e){ if(e.target===dlg) dlg.close(); });
+})();
+</script>
 <dialog class="booking" id="booking" aria-label="Book a visit">
   <div class="booking-inner">
     <div class="booking-bar"><span>Book a visit</span><button class="booking-close" type="button" aria-label="Close booking"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
