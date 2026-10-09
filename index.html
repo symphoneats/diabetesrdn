@@ -604,7 +604,185 @@ body.panels[data-at="rates"] .dots button{color:var(--price-ink)}
 .sub-status{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;margin:0;font:500 15px var(--sans);color:var(--muted)}
 .refer-note a{color:var(--hl,var(--leaf))}
 @media (max-width:640px){.sub-dlg{height:auto;max-height:100%}}
+
+/* annual package card in Rates: boutique, minimal */
+.annual{width:min(820px,100%);margin:14px auto 10px;padding:26px 36px;background:color-mix(in srgb,#fff 72%,transparent);border-top:1px solid color-mix(in srgb,var(--ink) 22%,transparent);border-bottom:1px solid color-mix(in srgb,var(--ink) 22%,transparent);text-align:left;display:grid;grid-template-columns:1fr auto;column-gap:40px;row-gap:8px;align-items:center}
+.annual-top{display:contents}
+.annual-name{grid-column:1;font:400 26px/1.25 var(--serif);font-style:italic;color:var(--ink);letter-spacing:.005em}
+.annual-price{grid-column:2;grid-row:1/span 2;font:400 44px/1 var(--serif);color:#EC8E7E;text-align:right;white-space:nowrap}
+.annual-price small{display:block;margin-top:8px;font:600 11px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.annual p{grid-column:1;margin:0;font:400 15.5px/1.65 var(--text,var(--sans));color:var(--body);max-width:52ch}
+@media (max-width:640px){.annual{grid-template-columns:1fr;padding:22px 4px;text-align:center}.annual-price{grid-column:1;grid-row:auto;text-align:center;margin:6px 0 4px}.annual p{margin:0 auto}}
+@media (max-width:640px){.prices div + div{border-left:0}}
 </style>
+<!-- structured data for search engines (invisible to visitors) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "MedicalBusiness",
+      "@id": "https://diabetesrdn.com/#practice",
+      "name": "DiabetesRDN",
+      "alternateName": "DiabetesRDN by Symphoneats",
+      "slogan": "Concierge diabetes nutrition care",
+      "description": "Concierge diabetes nutrition care. A private-pay diabetes dietitian and diabetes educator offering personalized medical nutrition therapy (MNT), coordinated with your physician or concierge care team, with email and text access between visits, priority scheduling and year-round annual care packages, for type 1 diabetes, type 2 diabetes, prediabetes, insulin pumps, CGMs, and GLP-1 medications such as Ozempic, Wegovy, Mounjaro and Zepbound. In person in Pasadena, Los Angeles County and Santa Barbara, and by telehealth.",
+      "url": "https://diabetesrdn.com/",
+      "image": "https://diabetesrdn.com/images/share-preview.jpg",
+      "email": "book@diabetesrdn.com",
+      "priceRange": "$175 - $2,500",
+      "makesOffer": [
+        {
+          "@type": "Offer",
+          "name": "Initial assessment",
+          "price": "300",
+          "priceCurrency": "USD"
+        },
+        {
+          "@type": "Offer",
+          "name": "Follow-up visit",
+          "price": "175",
+          "priceCurrency": "USD"
+        },
+        {
+          "@type": "Offer",
+          "name": "Signature Annual Care Package",
+          "description": "Year-round concierge diabetes nutrition care with email and text access between visits and priority scheduling.",
+          "price": "2500",
+          "priceCurrency": "USD"
+        }
+      ],
+      "paymentAccepted": "Private pay; superbills provided for out-of-network reimbursement",
+      "medicalSpecialty": "DietNutrition",
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Pasadena, CA"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Los Angeles County, CA"
+        },
+        {
+          "@type": "City",
+          "name": "Santa Barbara, CA"
+        },
+        {
+          "@type": "State",
+          "name": "California"
+        }
+      ],
+      "availableService": [
+        {
+          "@type": "MedicalTherapy",
+          "name": "Concierge diabetes nutrition care"
+        },
+        {
+          "@type": "MedicalTherapy",
+          "name": "Concierge nutrition packages with email and text access between visits and priority scheduling"
+        },
+        {
+          "@type": "MedicalTherapy",
+          "name": "Signature Annual Care Package: year-round concierge diabetes nutrition care"
+        },
+        {
+          "@type": "MedicalTherapy",
+          "name": "Diabetes dietitian for concierge medicine and private practice patients"
+        },
+        {
+          "@type": "MedicalTherapy",
+          "name": "Medical nutrition therapy for diabetes"
+        },
+        {
+          "@type": "MedicalTherapy",
+          "name": "Type 2 diabetes and prediabetes nutrition counseling"
+        },
+        {
+          "@type": "MedicalTherapy",
+          "name": "Type 1 and insulin-dependent diabetes nutrition for people using insulin pumps and CGMs"
+        },
+        {
+          "@type": "MedicalTherapy",
+          "name": "Nutrition support on GLP-1 medications (Ozempic, Wegovy, Mounjaro, Zepbound)"
+        },
+        {
+          "@type": "MedicalTherapy",
+          "name": "Telehealth diabetes nutrition visits"
+        }
+      ],
+      "founder": {
+        "@id": "https://diabetesrdn.com/#katherine-chen"
+      },
+      "parentOrganization": {
+        "@type": "Organization",
+        "name": "Symphoneats",
+        "url": "https://www.symphoneats.com"
+      },
+      "sameAs": [
+        "https://www.symphoneats.com",
+        "https://diabetesrdn.substack.com/"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://diabetesrdn.com/#katherine-chen",
+      "name": "Katherine Chen",
+      "honorificSuffix": "MS, RD, CDCES",
+      "jobTitle": "Registered Dietitian and Certified Diabetes Care and Education Specialist",
+      "description": "Concierge diabetes dietitian and diabetes educator in Pasadena and Santa Barbara, California.",
+      "image": "https://diabetesrdn.com/images/headshot-katherine-chen.jpg",
+      "url": "https://diabetesrdn.com/#about",
+      "worksFor": {
+        "@id": "https://diabetesrdn.com/#practice"
+      },
+      "hasCredential": [
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Registered Dietitian (RD)"
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Certified Diabetes Care and Education Specialist (CDCES)"
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Master of Science (MS), Nutrition, Healthspan and Longevity"
+        }
+      ],
+      "alumniOf": [
+        {
+          "@type": "CollegeOrUniversity",
+          "name": "University of Southern California"
+        },
+        {
+          "@type": "CollegeOrUniversity",
+          "name": "California State Polytechnic University, Pomona"
+        }
+      ],
+      "knowsAbout": [
+        "Diabetes nutrition",
+        "Concierge diabetes care",
+        "Concierge nutrition",
+        "Medical nutrition therapy",
+        "Type 1 diabetes",
+        "Type 2 diabetes",
+        "Prediabetes",
+        "Lowering A1c",
+        "Blood sugar management",
+        "Insulin pumps",
+        "Continuous glucose monitors (CGM)",
+        "Carbohydrate counting",
+        "GLP-1 medications",
+        "Ozempic",
+        "Wegovy",
+        "Mounjaro",
+        "Zepbound",
+        "Culturally tailored nutrition"
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <a class="skip" href="#home">Skip to content</a>
@@ -674,7 +852,7 @@ body.panels[data-at="rates"] .dots button{color:var(--price-ink)}
     <div class="three-col">
       <div class="rv" style="--d:3"><!-- IMAGE SLOT --><h3>Type 2 and prediabetes</h3><p class="copy">Bring your A1c down with meals built around your schedule, culture and cravings.</p><figure class="card-photo"><picture><source srcset="images/card-type2-prediabetes.webp" type="image/webp"><img src="images/card-type2-prediabetes.jpg" alt="Whole grains and complex carbs: brown rice, soba noodles, jicama and dal" width="502" height="592" loading="lazy" decoding="async"></picture></figure></div>
       <div class="rv" style="--d:4"><!-- IMAGE SLOT --><h3>Type 1 and insulin-dependent diabetes</h3><p class="copy">Today's pumps forgive imperfect carb counts. We focus on what still matters: knowing how your meals, from rice to pizza night, move your glucose.</p><figure class="card-photo"><picture><source srcset="images/card-type1-insulin.webp" type="image/webp"><img src="images/card-type1-insulin.jpg" alt="Glucose meter, lancing device, green apple and pink hand weights" width="445" height="491" loading="lazy" decoding="async"></picture></figure></div>
-      <div class="rv" style="--d:5"><!-- IMAGE SLOT --><h3>GLP-1 medications</h3><p class="copy">Enough protein and nutrients while your appetite is low, fewer side effects, and keeping the muscle you've built.</p><figure class="card-photo round"><picture><source srcset="images/card-glp1.webp" type="image/webp"><img src="images/card-glp1.jpg" alt="Braised short rib with mashed potatoes, broccolini and carrots" width="560" height="549" loading="lazy" decoding="async"></picture></figure></div>
+      <div class="rv" style="--d:5"><!-- IMAGE SLOT --><h3>GLP-1 medications</h3><p class="copy">On Ozempic, Wegovy, Mounjaro or Zepbound? Enough protein and nutrients while your appetite is low, fewer side effects, and keeping the muscle you've built.</p><figure class="card-photo round"><picture><source srcset="images/card-glp1.webp" type="image/webp"><img src="images/card-glp1.jpg" alt="Braised short rib with mashed potatoes, broccolini and carrots" width="560" height="549" loading="lazy" decoding="async"></picture></figure></div>
     </div>
   </section>
 
@@ -722,8 +900,9 @@ body.panels[data-at="rates"] .dots button{color:var(--price-ink)}
         <div><span class="price">$300</span><small>Initial assessment</small></div>
         <div><span class="price sm">$175</span><small>Follow-up visits</small></div>
       </div>
-      <p class="lead rv" style="--d:2"><a class="pkg-link" href="https://l.bttr.to/oIcjy" target="_blank" rel="noopener" data-packages>Packages</a> are available for ongoing support. Private pay, with superbills for eligible visits so you can request out-of-network reimbursement.</p>
-      <a class="btn btn-dark rv" style="--d:3;margin-top:8px;min-height:60px;padding:0 40px;font-size:17px" href="#book" role="button" data-book>Book your first visit</a>
+      <div class="annual rv" style="--d:2"><div class="annual-top"><span class="annual-name">Signature Annual Care Package</span><span class="annual-price">$2,500<small>per year</small></span></div><p>Year-round concierge diabetes nutrition care, coordinated with your physician, with email and text access between visits and priority scheduling.</p></div>
+      <p class="lead rv" style="--d:3"><a class="pkg-link" href="https://l.bttr.to/oIcjy" target="_blank" rel="noopener" data-packages>Packages</a> are available for ongoing support. Private pay, with superbills for eligible visits so you can request out-of-network reimbursement.</p>
+      <a class="btn btn-dark rv" style="--d:4;margin-top:8px;min-height:60px;padding:0 40px;font-size:17px" href="#book" role="button" data-book>Book your first visit</a>
     </div>
   </section>
 
